@@ -1,10 +1,9 @@
 import com.codeborne.selenide.Selenide;
 
-public class RozetkaUserPage  {
+public class RozetkaUserPage {
 
-    public String getLoginUSerName(){
-      String text = "Khrystyna Vasyliv";
-        Selenide
+    public String getUserName() {
+        String text = Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']")
                 .getText();
         return text;
@@ -12,11 +11,13 @@ public class RozetkaUserPage  {
     }
 
     public RozetkaUserPage logOutFromTheSite() {
-     Selenide
+        Selenide.refresh();
+
+        Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']").click();
         Selenide
                 .$x("//div[@class='header-topline']//li[14]//a[1]").click();
-
+        Selenide.refresh();
         return this;
     }
 }

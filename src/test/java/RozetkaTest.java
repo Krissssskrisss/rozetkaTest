@@ -11,24 +11,29 @@ public class RozetkaTest {
         RozetkaUserPage resultPage = new GoogleHomePage()
                 .openGoogleHomepage()
                 .search("rozetka")
-                .navigateToRozetkapage()
+                .navigateToRozetkaPage()
                 .navigateToLoginForm()
                 .loginToTheSite();
 
-        String loggedInUserName = resultPage.getLoginUSerName();
+        String loggedInUserName = resultPage.getUserName();
         assertEquals(loggedInUserName, expectedUserName);
 
     }
 
     @Test
     void verifySuccessfulLogOut() {
+
+        String expectedUserName = "войдите в личный кабинет";
         RozetkaUserPage resultPage = new GoogleHomePage()
                 .openGoogleHomepage()
                 .search("rozetka")
-                .navigateToRozetkapage()
+                .navigateToRozetkaPage()
                 .navigateToLoginForm()
                 .loginToTheSite()
                 .logOutFromTheSite();
+
+        String loggedOutUserName = resultPage.getUserName();
+        assertEquals(loggedOutUserName, expectedUserName);
     }
 
 

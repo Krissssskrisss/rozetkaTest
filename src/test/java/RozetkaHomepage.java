@@ -11,7 +11,7 @@ public class RozetkaHomepage {
         return this;
     }
 
-    public RozetkaUserPage loginToTheSite(){
+    public RozetkaUserPage loginToTheSite() {
 
         Selenide.
                 $(By.id("auth_email")).setValue("vasyliv1309@gmail.com");
