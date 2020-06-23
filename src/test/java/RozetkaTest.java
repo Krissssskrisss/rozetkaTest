@@ -8,10 +8,8 @@ public class RozetkaTest {
     void verifySuccessfulLogIn() {
 
         String expectedUserName = "Khrystyna Vasyliv";
-        RozetkaUserPage resultPage = new GoogleHomePage()
-                .openGoogleHomepage()
-                .search("rozetka")
-                .navigateToRozetkaPage()
+        RozetkaUserPage resultPage = new RozetkaHomePage()
+                .openRozetkaHomePage()
                 .navigateToLoginForm()
                 .loginToTheSite();
 
@@ -24,10 +22,8 @@ public class RozetkaTest {
     void verifySuccessfulLogOut() {
 
         String expectedUserName = "войдите в личный кабинет";
-        RozetkaUserPage resultPage = new GoogleHomePage()
-                .openGoogleHomepage()
-                .search("rozetka")
-                .navigateToRozetkaPage()
+        RozetkaUserPage resultPage = new RozetkaHomePage()
+                .openRozetkaHomePage()
                 .navigateToLoginForm()
                 .loginToTheSite()
                 .logOutFromTheSite();

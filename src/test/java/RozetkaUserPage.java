@@ -7,11 +7,9 @@ public class RozetkaUserPage {
                 .$x("//a[@class='header-topline__user-link link-dashed']")
                 .getText();
         return text;
-
     }
 
     public RozetkaUserPage logOutFromTheSite() {
-        Selenide.refresh();
 
         Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']").click();
