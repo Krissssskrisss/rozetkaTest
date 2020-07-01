@@ -4,29 +4,18 @@ import org.openqa.selenium.Keys;
 
 public class RozetkaHomePage {
 
-    public RozetkaHomePage openRozetkaHomePage() {
+    public RozetkaHomePage open() {
         Selenide.open("https://rozetka.com.ua/");
 
         return this;
     }
-    public RozetkaHomePage navigateToLoginForm() {
+    public LoginPopup openLoginPopup() {
 
         Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']")
                 .sendKeys(Keys.ENTER);
-        return this;
+        return new LoginPopup();
     }
 
-    public RozetkaUserPage loginToTheSite() {
 
-        Selenide.
-                $(By.id("auth_email")).setValue("vasyliv1309@gmail.com");
-        Selenide.
-                $(By.id("auth_pass")).setValue("Hrustik2509!");
-        Selenide.
-                $x("//button[@class='button button_size_large button_color_green auth-modal__submit']").click();
-
-        Selenide.refresh();
-        return new RozetkaUserPage();
-    }
 }
