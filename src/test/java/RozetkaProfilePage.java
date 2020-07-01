@@ -9,7 +9,7 @@ public class RozetkaUserPage {
         return text;
     }
 
-    public RozetkaUserPage logOutFromTheSite() {
+    public RozetkaUserPage logOut() {
 
         Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']").click();
