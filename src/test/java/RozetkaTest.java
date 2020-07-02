@@ -32,13 +32,14 @@ public class RozetkaTest {
     @Test
     void verifySuccessfulLogOut() {
                 profilePage.logOut();
-
+        //TODO: logOutAndVerify();
     }
 
     @Test
     void verifySamsungSearch(){
 
         String searchItem = "Samsung";
+        //TODO: getLinksList()
         List<SelenideElement>  searchResultList =  profilePage.searchSamsung().getListLink();
 
         List<SelenideElement> tenLinksElements = searchResultList;
