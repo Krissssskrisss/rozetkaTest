@@ -11,22 +11,20 @@ import static org.testng.Assert.assertEquals;
 import static com.codeborne.selenide.Selenide.$$x;
 import static org.testng.Assert.assertTrue;
 
+//TODO: rename to SearchResultsPage
 public class SearchSamsungPage {
 
     public List<SelenideElement> getListLink() {
 
         ElementsCollection searchResults = $$x("div[@id='content']/div[@name='page']/div[@class='search']/div[@class='wrap']/div[2]");
         List<SelenideElement> linkList = new ArrayList<>();
+        //TODO: remove, unused
         int i = 0;
         for (SelenideElement el : searchResults) {
             linkList.add(el);
         }
         return linkList;
-
+        
+        //TODO: replace to return Arrays.asList(searchResults);
     }
-
-
-
 }
-
-
