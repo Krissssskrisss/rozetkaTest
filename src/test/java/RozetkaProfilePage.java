@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 public class RozetkaProfilePage {
 
     public String getUserName() {
+        //TODO: inline variable
         String text = Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']")
                 .getText();
@@ -15,7 +16,7 @@ public class RozetkaProfilePage {
     }
 
     public RozetkaProfilePage logOut() {
-
+        //TODO: static import
         Selenide
                 .$x("//a[@class='header-topline__user-link link-dashed']")
                 .click();
@@ -30,8 +31,9 @@ public class RozetkaProfilePage {
         return this;
     }
 
-
+    //TODO: add search term to method parameters
     public SearchSamsungPage searchSamsung(){
+        //TODO: avoid cyrillic 
         Selenide
                 .$x("//input[@placeholder='Я ищу...']")
                 .setValue("Samsung")
