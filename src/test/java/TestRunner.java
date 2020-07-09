@@ -10,6 +10,7 @@ public class TestRunner {
 
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
+        //TODO: increase timeout
         Configuration.timeout = 6000;
     }
 
