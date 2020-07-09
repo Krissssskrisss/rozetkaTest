@@ -13,7 +13,7 @@ public class LoginPopup {
         Selenide.
                 $(By.id("auth_pass")).setValue(password);
 
-                $x("//button[@class='button button_size_large button_color_green auth-modal__submit']").click();
+        $x("//button[@class='button button_size_large button_color_green auth-modal__submit']").click();
         Selenide.refresh();
         return new RozetkaProfilePage();
     }

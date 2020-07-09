@@ -8,6 +8,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$$x;
 
+
 public class SearchProductPage {
     @Step("Verify 10 first links contain Samsung")
     public List<ElementsCollection> getListLink() {
@@ -21,5 +22,3 @@ public class SearchProductPage {
     }
 
 }
-
-

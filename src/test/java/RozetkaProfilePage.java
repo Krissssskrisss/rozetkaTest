@@ -29,7 +29,6 @@ public class RozetkaProfilePage {
         $x("//input[@name='search']")
                 .setValue(searchItem)
                 .sendKeys(Keys.ENTER);
-
         $x(("//div[@id='block_with_search']/div/div[2]/div/div/div"))
                 .shouldHave(matchesText(searchItem));
         return new SearchProductPage();

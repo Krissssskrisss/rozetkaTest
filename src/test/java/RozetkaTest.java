@@ -19,7 +19,6 @@ public class RozetkaTest extends TestRunner {
                 .open()
                 .openLoginPopup()
                 .login("vasyliv1309@gmail.com", "Hrustik2509!");
-
     }
 
     @Test
