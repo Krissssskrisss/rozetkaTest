@@ -19,6 +19,7 @@ public class RozetkaProfilePage {
                 .click();
         $x("//div[@class='header-topline']//li[14]//a[1]")
                 .click();
+        //TODO: remove cyrillic
         $x("//a[@class='header-topline__user-link link-dashed']")
                 .shouldHave(text("войдите в личный кабинет"));
         return this;
