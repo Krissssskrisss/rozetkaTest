@@ -1,4 +1,5 @@
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ElementsCollection;
+import io.qameta.allure.Step;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -7,12 +8,13 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class RozetkaTest {
+public class RozetkaTest extends TestRunner {
     private RozetkaProfilePage profilePage;
 
 
     @BeforeMethod
-    void login(){
+    @Step("Login test")
+    void login() {
         profilePage = new RozetkaHomePage()
                 .open()
                 .openLoginPopup()
@@ -21,6 +23,7 @@ public class RozetkaTest {
     }
 
     @Test
+    @Step("Successful login to the Rozetka site")
     void verifySuccessfulLogIn() {
 
         String expectedUserName = "Khrystyna Vasyliv";
@@ -30,22 +33,19 @@ public class RozetkaTest {
     }
 
     @Test
+    @Step("Verify logout from Rozetka site")
     void verifySuccessfulLogOut() {
-                profilePage.logOut();
+        profilePage.logOut();
 
     }
 
     @Test
-    void verifySamsungSearch(){
+    @Step("Verify Search for samsung containing text in 10 first links")
+    void verifyProductSearch() {
+        List<ElementsCollection> searchResultList = profilePage.searchProduct("Samsung").getListLink();
 
-        String searchItem = "Samsung";
-        List<SelenideElement>  searchResultList =  profilePage.searchSamsung().getListLink();
-
-        List<SelenideElement> tenLinksElements = searchResultList;
-
-        assertTrue(tenLinksElements.size() >= 10, "Not correct search result");
-        assertTrue(tenLinksElements.contains(searchItem), "Text isn't correct");
-
+        assertTrue(searchResultList.toString().contains("Samsung"), "Text isn't correct");
+        assertTrue(searchResultList.size() >= 10, "Not correct search result");
     }
 
 }

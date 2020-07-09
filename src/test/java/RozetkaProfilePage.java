@@ -1,47 +1,38 @@
-import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.matchesText;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class RozetkaProfilePage {
-
+    @Step("Verify Login to the site")
     public String getUserName() {
-        String text = Selenide
-                .$x("//a[@class='header-topline__user-link link-dashed']")
+        return $x("//a[@class='header-topline__user-link link-dashed']")
                 .getText();
-        return text;
     }
 
+    @Step("Log out from rozetka site")
     public RozetkaProfilePage logOut() {
 
-        Selenide
-                .$x("//a[@class='header-topline__user-link link-dashed']")
+        $x("//a[@class='header-topline__user-link link-dashed']")
                 .click();
-        Selenide
-                .$x("//div[@class='header-topline']//li[14]//a[1]")
+        $x("//div[@class='header-topline']//li[14]//a[1]")
                 .click();
-        Selenide.
-                $x("//a[@class='header-topline__user-link link-dashed']")
+        $x("//a[@class='header-topline__user-link link-dashed']")
                 .shouldHave(text("войдите в личный кабинет"));
-
-
         return this;
     }
 
-
-    public SearchSamsungPage searchSamsung(){
-        Selenide
-                .$x("//input[@placeholder='Я ищу...']")
-                .setValue("Samsung")
+    @Step("Search for samsung product")
+    public SearchProductPage searchProduct(String searchItem) {
+        $x("//input[@name='search']")
+                .setValue(searchItem)
                 .sendKeys(Keys.ENTER);
 
-        Selenide
-                .$(By.className("catalog-list"))
-                .shouldHave(text("Samsung"));
-
-        return new SearchSamsungPage();
+        $x(("//div[@id='block_with_search']/div/div[2]/div/div/div"))
+                .shouldHave(matchesText(searchItem));
+        return new SearchProductPage();
 
     }
 }
