@@ -10,7 +10,7 @@ public class TestRunner {
 
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
-        Configuration.timeout = 6000;
+        Configuration.timeout = 60000;
     }
 
     @AfterMethod

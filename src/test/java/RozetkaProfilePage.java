@@ -2,7 +2,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.matchesText;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RozetkaProfilePage {
@@ -19,8 +18,6 @@ public class RozetkaProfilePage {
                 .click();
         $x("//div[@class='header-topline']//li[14]//a[1]")
                 .click();
-        $x("//a[@class='header-topline__user-link link-dashed']")
-                .shouldHave(text("войдите в личный кабинет"));
         return this;
     }
 

@@ -34,7 +34,11 @@ public class RozetkaTest extends TestRunner {
     @Test
     @Step("Verify logout from Rozetka site")
     void verifySuccessfulLogOut() {
+        String expectedUserName = "Khrystyna Vasyliv";
+        String loggedOutUser = profilePage.getUserName();
+
         profilePage.logOut();
+        assertEquals(loggedOutUser, expectedUserName);
 
     }
 
