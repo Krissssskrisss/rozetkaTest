@@ -39,14 +39,16 @@ public class RozetkaTest extends TestRunner {
 
         profilePage.logOut();
         assertEquals(loggedOutUser, expectedUserName);
-
     }
 
     @Test
     @Step("Verify Search for samsung containing text in 10 first links")
     void verifyProductSearch() {
+        //TODO: re-do into ElementsCollection
         List<ElementsCollection> searchResultList = profilePage.searchProduct("Samsung").getListLink();
 
+        //TODO: searchResultList.texts().contains()
+        //TODO: move 'samsung' to variable
         assertTrue(searchResultList.toString().contains("Samsung"), "Text isn't correct");
         assertTrue(searchResultList.size() >= 10, "Not correct search result");
     }

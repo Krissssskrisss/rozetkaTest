@@ -8,6 +8,7 @@ public class LoginPopup {
     @Step("login to the site")
     public RozetkaProfilePage login(String username, String password) {
 
+        //TODO: static import
         Selenide.
                 $(By.id("auth_email")).setValue(username);
         Selenide.
