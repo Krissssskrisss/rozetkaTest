@@ -1,7 +1,6 @@
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Condition.matchesText;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RozetkaProfilePage {
@@ -22,13 +21,23 @@ public class RozetkaProfilePage {
     }
 
     @Step("Search for samsung product")
-    public SearchProductPage searchProduct(String searchItem) {
+    public SearchResultsPage searchProduct(String searchItem) {
         $x("//input[@name='search']")
                 .setValue(searchItem)
                 .sendKeys(Keys.ENTER);
-        $x(("//div[@id='block_with_search']/div/div[2]/div/div/div"))
-                .shouldHave(matchesText(searchItem));
-        return new SearchProductPage();
+        $x(("//div[@id='block_with_search']/div/div[2]/div/div/div"));
+        //     .shouldHave(matchesText(searchItem));
+        return new SearchResultsPage();
+
+    }
+
+    @Step("Go to the Smartphone tab")
+    public SmartPhonePage goToSmartPhonePage() {
+        $x("//sidebar-fat-menu//li[2]//a[1]").click();
+        $x("//li[2]//div[1]//div[2]//div[1]//div[1]//ul[1]//li[1]//ul[1]//li[1]//a[1]")
+                .click();
+
+        return new SmartPhonePage();
 
     }
 }

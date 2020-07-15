@@ -1,4 +1,4 @@
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,8 +9,8 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class RozetkaTest extends TestRunner {
+    String expectedUserName = "Khrystyna Vasyliv";
     private RozetkaProfilePage profilePage;
-
 
     @BeforeMethod
     @Step("Login test")
@@ -24,8 +24,6 @@ public class RozetkaTest extends TestRunner {
     @Test
     @Step("Successful login to the Rozetka site")
     void verifySuccessfulLogIn() {
-
-        String expectedUserName = "Khrystyna Vasyliv";
         String loggedInUserName = profilePage.getUserName();
         assertEquals(loggedInUserName, expectedUserName);
 
@@ -34,7 +32,6 @@ public class RozetkaTest extends TestRunner {
     @Test
     @Step("Verify logout from Rozetka site")
     void verifySuccessfulLogOut() {
-        String expectedUserName = "Khrystyna Vasyliv";
         String loggedOutUser = profilePage.getUserName();
 
         profilePage.logOut();
@@ -44,13 +41,27 @@ public class RozetkaTest extends TestRunner {
     @Test
     @Step("Verify Search for samsung containing text in 10 first links")
     void verifyProductSearch() {
-        //TODO: re-do into ElementsCollection
-        List<ElementsCollection> searchResultList = profilePage.searchProduct("Samsung").getListLink();
+        String productItem = "Samsung";
+        List<SelenideElement> searchResultList = profilePage.searchProduct(productItem).getListLink();
 
-        //TODO: searchResultList.texts().contains()
-        //TODO: move 'samsung' to variable
-        assertTrue(searchResultList.toString().contains("Samsung"), "Text isn't correct");
-        assertTrue(searchResultList.size() >= 10, "Not correct search result");
+        for (SelenideElement product : searchResultList) {
+            assertTrue(product.text().contains(productItem), "Text isn't correct");
+            assertTrue(searchResultList.size() >= 10, "Not correct count of results");
+        }
     }
+
+    @Test
+    void verifySmartPhonePage() {
+        String priceMinRange = "3000";
+        String priceMaxRange = "6000";
+
+        List<SelenideElement> priceSearchResultList = profilePage
+                .goToSmartPhonePage().verifyPriceRange("3000", "6000").verifyPriceRangeOnThePage();
+
+        for (SelenideElement product : priceSearchResultList) {
+            assertTrue(product.text().contains(priceMaxRange), "Price isn't correct");
+        }
+    }
+
 
 }
