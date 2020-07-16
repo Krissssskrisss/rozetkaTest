@@ -15,7 +15,7 @@ public class LoginPopup {
                 $(By.id("auth_pass")).setValue(password);
 
         $x("//button[@class='button button_size_large button_color_green auth-modal__submit']").click();
-        Selenide.refresh();
+        //TODO: add wait condition instead of Selenide.refresh();
         return new RozetkaProfilePage();
     }
 }
