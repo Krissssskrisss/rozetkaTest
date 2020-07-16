@@ -14,23 +14,16 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+*.idea
 *.iws
 *.iml
 *.ipr
+*.xml
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
 
 ### VS Code ###
 .vscode/
 mvnw*
 .mvn/
-/src/main/java/com/vgrazi/jca/play/
-!/src/main/java/com/vgrazi/jca/play/Main.java
-!/src/main/java/com/vgrazi/jca/play/StylePlay.java
+build/
+target/
