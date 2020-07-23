@@ -4,7 +4,7 @@ import org.openqa.selenium.Keys;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RozetkaProfilePage {
-
+    //TODO: rename getUsername()
     @Step("Verify Login Username on the site")
     public String verifyUserName() {
         return $x("//a[@class='header-topline__user-link link-dashed']")
@@ -35,6 +35,7 @@ public class RozetkaProfilePage {
     @Step("Open the Smartphone Page")
     public SmartPhonePage openSmartphonePage() {
         $x("//sidebar-fat-menu//li[2]//a[1]").click();
+        //TODO: relative
         $x("//li[2]//div[1]//div[2]//div[1]//div[1]//ul[1]//li[1]//ul[1]//li[1]//a[1]")
                 .click();
 
