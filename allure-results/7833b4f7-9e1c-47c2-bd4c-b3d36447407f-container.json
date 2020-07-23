@@ -1,0 +1,1 @@
+{"uuid":"7833b4f7-9e1c-47c2-bd4c-b3d36447407f","name":"RozetkaTest","children":["5fe57ead-7255-4526-8346-aa40599a1244"],"befores":[{"name":"configBrowser","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1595335919743,"stop":1595335919773}],"afters":[],"links":[],"start":1595335919698,"stop":1595335996744}
