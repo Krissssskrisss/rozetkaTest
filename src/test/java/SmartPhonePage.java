@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SmartPhonePage {
     @Step("Enter price range to the product")
-    public priceRangeSearchResultsPage verifyPriceRange(String priceMin, String priceMax) {
+    public PriceRangeSearchResultsPage setPriceRange(String priceMin, String priceMax) {
 
         $x("//ctg-filter-slider[@class='filter_layout_sidebar']//input[1]")
                 .setValue(priceMin);
@@ -13,6 +13,6 @@ public class SmartPhonePage {
         $x("//button[@class='button button_color_gray button_size_small slider-filter__button']")
                 .click();
 
-        return new priceRangeSearchResultsPage();
+        return new PriceRangeSearchResultsPage();
     }
 }
