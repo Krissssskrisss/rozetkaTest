@@ -3,10 +3,10 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.matchesText;
 import static com.codeborne.selenide.Selenide.$x;
-
+//TODO: no verify in PO, only 
 public class ComparisonPage {
     @Step("Check the first product contain correct name")
-    public SelenideElement verifyFirstProductToCompare() {
+    public SelenideElement verifyFirstProductToCompare() { //TODO: rename, pass in parameters
 
         SelenideElement product1 = $x("//a[contains(text(),'Ardis Santana 24\" 15\" 2019')]").waitUntil(matchesText("Ardis Santana"), 8000);
         return product1;
