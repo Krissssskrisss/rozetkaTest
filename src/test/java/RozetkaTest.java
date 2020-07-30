@@ -65,7 +65,7 @@ public class RozetkaTest extends TestRunner {
         }
     }
 
-    @Test
+    @Test //TODO: redo
     void verifyComparingTwoProducts() {
 
         String expectedProductInComparison1 = "Ardis Santana";
