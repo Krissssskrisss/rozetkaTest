@@ -4,7 +4,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class BicyclePage {
     @Step("Add two products to compare")
-    public ComparisonPage addTwoProductsForComparison() {
+    public ComparisonPage addTwoProductsForComparison() {//TODO: addTwoProductsForComparison(1, 5)
 
         $x("//li[1]//app-compare-button[1]//button[1]").click();
         $x("//li[5]//app-compare-button[1]//button[1]").click();
