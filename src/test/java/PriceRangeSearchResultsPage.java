@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class PriceRangeSearchResultsPage {
 
+    //TODO : rename
     @Step("Verify  product are in the correct price rang")
     public List<Integer> resultsOfPriceRangeOnThePage() {
         List<Integer> result = new ArrayList<>();
