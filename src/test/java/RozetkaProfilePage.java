@@ -1,12 +1,12 @@
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RozetkaProfilePage {
-    //TODO: rename getUsername()
     @Step("Verify Login Username on the site")
-    public String verifyUserName() {
+    public String getUsername() {
         return $x("//a[@class='header-topline__user-link link-dashed']")
                 .getText();
     }
@@ -35,11 +35,20 @@ public class RozetkaProfilePage {
     @Step("Open the Smartphone Page")
     public SmartPhonePage openSmartphonePage() {
         $x("//sidebar-fat-menu//li[2]//a[1]").click();
-        //TODO: relative
-        $x("//li[2]//div[1]//div[2]//div[1]//div[1]//ul[1]//li[1]//ul[1]//li[1]//a[1]")
+        $x("//a[contains(@href, 'https://rozetka.com.ua/mobile-phones/c80003/preset=smartfon/')]")
                 .click();
 
         return new SmartPhonePage();
-
     }
+
+    public SportAndAccessories openSportAndAccessories(){
+
+        $x("//sidebar-fat-menu//li[8]/a[1]")
+                .waitUntil(Condition.appears, 8000)
+                .click();
+
+        return  new SportAndAccessories();
+    }
+
+
 }

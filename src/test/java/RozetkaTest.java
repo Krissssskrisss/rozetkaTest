@@ -24,7 +24,7 @@ public class RozetkaTest extends TestRunner {
     @Test
     @Description("Successful login to the Rozetka site")
     void verifySuccessfulLogIn() {
-        String loggedInUserName = profilePage.verifyUserName();
+        String loggedInUserName = profilePage.getUsername();
         assertEquals(loggedInUserName, expectedUserName);
 
     }
@@ -34,7 +34,7 @@ public class RozetkaTest extends TestRunner {
     void verifySuccessfulLogOut() {
 
         profilePage.logOut();
-        String loggedOutUserName = profilePage.verifyUserName();
+        String loggedOutUserName = profilePage.getUsername();
         assertEquals(loggedOutUserName, expectedUserName);
     }
 
@@ -51,18 +51,36 @@ public class RozetkaTest extends TestRunner {
 
     @Test
     void verifySmartPhonePage() {
-        String priceMinRange = "3000";
-        String priceMaxRange = "6000";
+        int priceMinRange = 3000;
+        int priceMaxRange = 6000;
 
-        List<String> priceSearchResultList = profilePage
-                .openSmartphonePage().setPriceRange("3000", "6000").verifyPriceRangeOnThePage();
+        List<Integer> priceSearchResultList = profilePage
+                .openSmartphonePage().setPriceRange("3000", "6000").resultsOfPriceRangeOnThePage();
 
 
-        for (String price : priceSearchResultList) {
-//                assertTrue(price > priceMinRange, "Price is too low");
-//                assertTrue(price < priceMaxRange, "Price is too high");
+        for (Integer price : priceSearchResultList) {
+            assertTrue(price >= priceMinRange, "Price is too low");
+            assertTrue(price <= priceMaxRange, "Price is too high");
 
         }
+    }
+
+    @Test
+    void verifyComparingTwoProducts() {
+
+        String expectedProductInComparison1 = "Ardis Santana";
+        String expectedProductInComparison2 = "Formula Blade";
+
+        SelenideElement firstProductInComparison =
+                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison().verifyFirstProductToCompare();
+        SelenideElement secondProductInComparison =
+                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison().verifySecondProductToCompare();
+
+
+        assertEquals(firstProductInComparison, expectedProductInComparison1);
+        assertEquals(secondProductInComparison, expectedProductInComparison2);
+
+
     }
 
 }
