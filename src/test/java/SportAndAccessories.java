@@ -6,8 +6,7 @@ public class SportAndAccessories {
 
     @Step("Open the Bicycle page")
     public BicyclePage openBicyclePage() {
-        //TODO: no cyrillic
-        $x("//a[contains(text(),'Велосипеды, электровелосипеды и аксессуары')]")
+        $x("//a[contains(@href, 'https://rozetka.com.ua/velosipedy-i-aksessuary/c83882/')]")
                 .click();
 
         return new BicyclePage();

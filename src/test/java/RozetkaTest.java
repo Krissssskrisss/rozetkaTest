@@ -71,14 +71,14 @@ public class RozetkaTest extends TestRunner {
         String expectedProductInComparison1 = "Ardis Santana";
         String expectedProductInComparison2 = "Formula Blade";
 
-        SelenideElement firstProductInComparison =
-                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison().verifyFirstProductToCompare();
-        SelenideElement secondProductInComparison =
-                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison().verifySecondProductToCompare();
+        SelenideElement
+                productsInComparison =
+                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison("Ardis Santana","Formula Blade").expectedResults();
 
 
-        assertEquals(firstProductInComparison, expectedProductInComparison1);
-        assertEquals(secondProductInComparison, expectedProductInComparison2);
+
+        assertEquals(productsInComparison, expectedProductInComparison1 );
+      //  assertEquals(secondProductInComparison, expectedProductInComparison2);
 
 
     }
