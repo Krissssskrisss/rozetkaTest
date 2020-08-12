@@ -3,6 +3,7 @@ import io.qameta.allure.Description;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -65,21 +66,28 @@ public class RozetkaTest extends TestRunner {
         }
     }
 
-    @Test //TODO: redo
+    @Test
     void verifyComparingTwoProducts() {
 
-        String expectedProductInComparison1 = "Ardis Santana";
-        String expectedProductInComparison2 = "Formula Blade";
+        ArrayList<Bicycle> itemsWeAreCompare = new ArrayList<>();
+        itemsWeAreCompare.add(new Bicycle(1, "Ardis Santana"));
+        itemsWeAreCompare.add(new Bicycle(5, "Formula Blade"));
 
-        SelenideElement
-                productsInComparison =
-                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison("Ardis Santana","Formula Blade").expectedResults();
+        List<String> expectedItemNames = new ArrayList<>();
+        for (Bicycle item : itemsWeAreCompare) {
+            expectedItemNames.add(item.name);
+        }
 
+        List<SelenideElement>
+                actualProductsInComparison =
+                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison(itemsWeAreCompare).actualProductsResultsForItems(itemsWeAreCompare);
 
+        List<String> actualProductTexts = new ArrayList<>();
+        for (SelenideElement product : actualProductsInComparison) {
+            actualProductTexts.add(product.getText());
+        }
 
-        assertEquals(productsInComparison, expectedProductInComparison1 );
-      //  assertEquals(secondProductInComparison, expectedProductInComparison2);
-
+        assertEquals(actualProductTexts, expectedItemNames);
 
     }
 
