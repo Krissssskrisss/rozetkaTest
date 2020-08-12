@@ -3,8 +3,12 @@ import io.qameta.allure.Description;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -65,22 +69,38 @@ public class RozetkaTest extends TestRunner {
         }
     }
 
+
+
     @Test //TODO: redo
     void verifyComparingTwoProducts() {
 
-        String expectedProductInComparison1 = "Ardis Santana";
-        String expectedProductInComparison2 = "Formula Blade";
+        ArrayList<Bicycle> itemsWeAreLookingFor = new ArrayList<>();
+        itemsWeAreLookingFor.add(new Bicycle(1, "Ardis Santana"));
+        itemsWeAreLookingFor.add(new Bicycle(5, "Formula Blade"));
 
-        SelenideElement
-                productsInComparison =
-                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison("Ardis Santana","Formula Blade").expectedResults();
-
-
-
-        assertEquals(productsInComparison, expectedProductInComparison1 );
-      //  assertEquals(secondProductInComparison, expectedProductInComparison2);
+        //I don't know if you already use lambdas
+        List<String> expectedItemNames = itemsWeAreLookingFor.stream()
+                .map(Bicycle::getName)
+                .collect(Collectors.toList());
 
 
+        List<SelenideElement> actualProductsInComparison =
+                profilePage
+                        .openSportAndAccessories()
+                        .openBicyclePage()
+                        .addProductsForComparison(itemsWeAreLookingFor)
+                        .actualResultsForItemNames(itemsWeAreLookingFor);
+
+
+
+        List<String> actualProductTexts = new ArrayList<>();
+        for (SelenideElement product: actualProductsInComparison) {
+            actualProductTexts.add(product.getText().trim());
+        }
+//        List<String> actualProductTexts = actualProductsInComparison.stream()
+//                .map(SelenideElement::getText)
+//                .collect(Collectors.toList());
+        assertThat(actualProductTexts,  containsInAnyOrder(expectedItemNames));
     }
 
 }
