@@ -80,14 +80,9 @@ public class RozetkaTest extends TestRunner {
 
         List<SelenideElement>
                 actualProductsInComparison =
-                profilePage.openSportAndAccessories().openBicyclePage().addTwoProductsForComparison(itemsWeAreCompare).actualProductsResultsForItems(itemsWeAreCompare);
+                profilePage.openSportAndAccessories().openBicyclePage().addProductsForComparison(itemsWeAreCompare).getProductsResults(itemsWeAreCompare);
 
-        List<String> actualProductTexts = new ArrayList<>();
-        for (SelenideElement product : actualProductsInComparison) {
-            actualProductTexts.add(product.getText());
-        }
-
-        assertEquals(actualProductTexts, expectedItemNames);
+        assertEquals(actualProductsInComparison, expectedItemNames);
 
     }
 

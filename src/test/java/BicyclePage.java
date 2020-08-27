@@ -6,9 +6,10 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class BicyclePage {
     @Step("Add two products to compare")
-    public ComparisonPage addTwoProductsForComparison(List<Bicycle> products) { //TODO: rename method or re-do
+    public ComparisonPage addProductsForComparison(List<Bicycle> products) {
         for (Bicycle product : products) {
-            $x("//li[" + product.id + "]//app-compare-button[1]//button[1]").setValue(product.name); //TODO: work with relative locators
+            $x("//li[" + product.id + "]//app-compare-button[1]//button[1]").setValue(product.name);
+
         }
         $x("//a[@class='comparison-modal__link']").click();
 
