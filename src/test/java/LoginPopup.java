@@ -12,7 +12,7 @@ public class LoginPopup {
         $(By.id("auth_email")).setValue(username);
         $(By.id("auth_pass")).setValue(password);
 
-        $x("//button[@class='button button_size_large button_color_green auth-modal__submit']")
+        $x("//button[@class='button button--large button--green auth-modal__submit']")
                 .waitUntil(Condition.appears, 8000)
                 .click();
 

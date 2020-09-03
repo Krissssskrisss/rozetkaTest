@@ -86,4 +86,11 @@ public class RozetkaTest extends TestRunner {
 
     }
 
+    @Test
+    void verifyShoppingCart(){
+
+        profilePage.openSportAndAccessories().addItemsToCart().checkShoppingCart();
+
+    }
+
 }
